@@ -1,0 +1,22 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Second Blog",
+      "author": "Second author",
+      "blog": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut pariatur quam repudiandae consequatur provident, mollitia ipsam accusamus,"
+    },
+    {
+      "id": 2,
+      "title": "Third Blog",
+      "author": "Third author",
+      "blog": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut pariatur quam repudiandae consequatur provident, mollitia ipsam accusamus,"
+    },
+    {
+      "id": 3,
+      "title": "Forth Blog",
+      "author": "Forth author",
+      "blog": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut pariatur quam repudiandae consequatur provident, mollitia ipsam accusamus,"
+    }
+  ]
+}

@@ -1,55 +1,33 @@
 import './App.css';
 import NavBar from './NavBar/NavBar';
 import Blogs from './Blogs/Blogs';
-import { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Error from './Error/Error';
+import SingleBlog from './SingleBlog/SingleBlog';
+import CreateBlog from './CreateBlog/CreateBlog';
 
-const blogs = [
-  {
-    "id": 0,
-      "title":"First Blog",
-      "author":"First author ",
-      "blog": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut pariatur quam repudiandae consequatur provident, mollitia ipsam accusamus,"
-  }, 
-   {
-    "id": 1,
-      "title": "Second Blog",
-      "author": "Second author",
-      "blog": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut pariatur quam repudiandae consequatur provident, mollitia ipsam accusamus,"
-  },      {
-      "id": 2,
-      "title": "Third Blog",
-      "author": "Third author",
-      "blog": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut pariatur quam repudiandae consequatur provident, mollitia ipsam accusamus,"
-  },      {
-    "id": 3,
-      "title": "Forth Blog",
-      "author": "Forth author",
-      "blog": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut pariatur quam repudiandae consequatur provident, mollitia ipsam accusamus,"
-  }
-];
+
+
 
 
 
 function App() {
-
-  const [data,setData] = useState([])
-  const [loading, setLoading] = useState(true);
-  
-
-  useEffect(() => {
-
-    
-    setTimeout(() => {
-      setData(blogs)
-      setLoading(!loading)
-    }, "2000")
-  },[])
   
   return (
+    <BrowserRouter>
     <div className="App">
       <NavBar/>
-      <Blogs data={data} loading={loading} />
+      <Routes>
+        <Route path='/' element={<Blogs />}/>
+        <Route path='/SingleBlog/:id' element={<SingleBlog />}/>
+        <Route path='*' element={<Error />}/>
+        <Route path='/CreateBlog' element={<CreateBlog/>}/>
+
+
+      </Routes>
+      
     </div>
+    </BrowserRouter>
   );
 }
 
