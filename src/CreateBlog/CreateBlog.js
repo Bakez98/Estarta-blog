@@ -1,9 +1,48 @@
-import React from 'react'
+import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import "./CreateBlog.css";
 
 const CreateBlog = () => {
-  return (
-    <div>CreateBlog</div>
-  )
-}
+  const navigate = useNavigate();
+  const myRef = useRef({
+    title: "",
+    author: "",
+    blog: "",
+  });
 
-export default CreateBlog
+  console.log(myRef.current)
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    fetch("http://localhost:7000/blogs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(myRef.current),
+    });
+    console.log(myRef.current)
+    navigate("/");
+  }
+
+  function handleChange(event) {
+    myRef.current = { ...myRef.current, [event.target.name] : event.target.value };
+  }
+
+  return (
+    <div className="wrap">
+      <form className="container" onSubmit={handleSubmit}>
+        <label>Title:</label>
+        <input type="text" name="title" required onChange={handleChange} />
+
+        <label >Body:</label>
+        <textarea name="blog" required onChange={handleChange}></textarea>
+
+        <label>Author:</label>
+        <input type="text" name="author" required onChange={handleChange} />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default CreateBlog;

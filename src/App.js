@@ -7,9 +7,11 @@ import SingleBlog from './SingleBlog/SingleBlog';
 import CreateBlog from './CreateBlog/CreateBlog';
 
 
+// to run the server for fetching data from it :
+//npx json-server --watch data/db.json --port 7000
 
-
-
+//to run the project :
+//npm start
 
 function App() {
   

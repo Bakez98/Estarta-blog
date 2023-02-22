@@ -4,12 +4,12 @@ import './NavBar.css';
 
 const NavBar = () => {
   return (
-    <div className='Container'>
+    <div className='Containers'>
 
-        <h1>Estarta Blog</h1>
+        <Link to={"/"} className="styling"><h1>Estarta Blog</h1> </Link>
         <div className='Buttons'>
-        <Link to={"/"}>Home</Link>
-        <button><Link to={"/CreateBlog"}>New Blog</Link></button>
+        <Link to={"/"} className="styling"><h2>Home</h2></Link>
+        <button><Link to={"/CreateBlog"} >New Blog</Link></button>
         </div>
     </div>
   )
