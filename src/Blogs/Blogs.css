@@ -86,6 +86,6 @@
   
   .search-bar:hover{
     transform: scale(1.05);
-    color: green;
+    color: black;
     border: solid black 0.5px;
   }

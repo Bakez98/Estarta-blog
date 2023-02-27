@@ -1,11 +1,13 @@
-import './App.css';
-import NavBar from './NavBar/NavBar';
-import Blogs from './Blogs/Blogs';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Error from './Error/Error';
-import SingleBlog from './SingleBlog/SingleBlog';
-import CreateBlog from './CreateBlog/CreateBlog';
+import "./App.css";
+import NavBar from "./NavBar/NavBar";
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
+const Blogs = lazy(() => import("./Blogs/Blogs"));
+const SingleBlog = lazy(() => import("./SingleBlog/SingleBlog"));
+const Error = lazy(() => import("./Error/Error"));
+const CreateBlog = lazy(() => import("./CreateBlog/CreateBlog"));
 
 // to run the server for fetching data from it :
 //npx json-server --watch data/db.json --port 7000
@@ -14,21 +16,24 @@ import CreateBlog from './CreateBlog/CreateBlog';
 //npm start
 
 function App() {
-  
   return (
     <BrowserRouter>
-    <div className="App">
-      <NavBar/>
-      <Routes>
-        <Route path='/' element={<Blogs />}/>
-        <Route path='/SingleBlog/:id' element={<SingleBlog />}/>
-        <Route path='*' element={<Error />}/>
-        <Route path='/CreateBlog' element={<CreateBlog/>}/>
-
-
-      </Routes>
-      
-    </div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Estarta Blogs</title>
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+      </Helmet>
+      <div className="App">
+        <NavBar />
+        <Suspense fallback={"Loading.........."}>
+          <Routes>
+            <Route path="/" element={<Blogs />} />
+            <Route path="/SingleBlog/:id" element={<SingleBlog />} />
+            <Route path="*" element={<Error />} />
+            <Route path="/CreateBlog" element={<CreateBlog />} />
+          </Routes>
+        </Suspense>
+      </div>
     </BrowserRouter>
   );
 }

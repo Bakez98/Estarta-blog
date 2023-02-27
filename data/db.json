@@ -1,40 +1,34 @@
 {
   "blogs": [
     {
-      "id": 1,
       "title": "First Blog",
       "author": "Omar",
-      "blog": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut pariatur quam repudiandae consequatur provident, mollitia ipsam accusamus,"
+      "blog": "Lorem Lorem Lorem Lorem Lorem Lorem ",
+      "id": 1
     },
     {
-      "id": 2,
       "title": "Second Blog",
-      "author": "Adhamd",
-      "blog": "lorem Body"
+      "author": "Adham",
+      "blog": "Lorem Lorem Lorem Lorem Lorem Lorem ",
+      "id": 2
     },
     {
-      "title": "Third Blog",
-      "author": "Rawan",
-      "blog": "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem rem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Loremrem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem ",
+      "title": "Third Blog ",
+      "author": "Bassam",
+      "blog": "Lorem Lorem Lorem Lorem Lorem Lorem ",
       "id": 3
     },
     {
       "title": "Fourth Blog",
-      "author": "Kareem",
-      "blog": "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem ",
-      "id": 5
-    },
-    {
-      "title": "Fifth Blog",
       "author": "Bassam",
-      "blog": "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem ",
-      "id": 5
+      "blog": "Lorem Lorem Lorem Lorem Lorem Lorem ",
+      "id": 4
     },
     {
-      "title": "6th Blog",
+      "title": "fifth Blog",
       "author": "Waed",
-      "blog": "Testing Testing Testing Testing Testing Testing Testing ",
-      "id": 6
+      "blog": "Lorem Lorem Lorem Lorem Lorem Lorem Lorem ",
+      "id": 5
     }
   ]
 }

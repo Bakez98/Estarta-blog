@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { useNavigate, useParams } from 'react-router-dom'
 import useFetch from '../CustomHook/useFetch'
 
@@ -6,6 +7,8 @@ import useFetch from '../CustomHook/useFetch'
 
 const SingleBlog = () => {
     
+
+  
     const navigate = useNavigate()
     const {id} = useParams()
     const {data : blog, loading, error} = useFetch(`http://localhost:7000/blogs/${id}`)
@@ -24,7 +27,14 @@ const SingleBlog = () => {
 if(error) return "Errror fetching....."
 
   return (
+
+
     <div key={blog.id}>
+          <Helmet>
+    <meta charSet="utf-8" />
+    <title>{`Blog ${blog.id}`}</title>
+    <link rel="canonical" href="http://mysite.com/example" />
+  </Helmet>
     
       <h2>{blog.title}</h2>
       <div>{blog.author}</div>
