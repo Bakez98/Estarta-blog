@@ -2,12 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
-
+import { memo } from "react";
 
 const Blog = ({ blog }) => {
   const [Title, setTitle] = useState(blog.title);
   const [enableEditMode, setenableEditMode] = useState(false);
-
+  // console.log(`blog render ${blog.id}`);
   const handleEdit = () => {
     setenableEditMode(true);
   };
@@ -53,4 +53,4 @@ const Blog = ({ blog }) => {
   );
 };
 
-export default Blog;
+export default memo(Blog);
