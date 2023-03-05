@@ -11,7 +11,7 @@ const Blogs = () => {
   const [searching, setSearch] = useState("");
 
   //using useSelector to get the state from my reducer
-  const { blogs, loading, error, activeBlog } = useSelector((state) => state.blogsReducer);
+  const { blogs, loading, error } = useSelector((state) => state.blogsReducer);
 
   //using useDispatch :
   const dispatch = useDispatch();

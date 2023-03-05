@@ -46,6 +46,7 @@ const SingleBlog = () => {
         type: "FETCH_CLEAN_UP"
       })
       console.log("Clean up for singleBlog")
+      console.log(activeBlog)
     };
   }, []);
 
