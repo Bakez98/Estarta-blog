@@ -1,46 +1,71 @@
-import React, {  useMemo, useState } from "react";
-// import useCallback from "react";
+import React, {  useMemo, useState , useEffect} from "react";
 import "./Blogs.css";
-import useFetch from "../CustomHook/useFetch";
+// import useFetch from "../CustomHook/useFetch";
 import Blog from "./Blog";
-// import { MdPermDataSetting } from "react-icons/md";
+
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Blogs = () => {
-  const { data, loading, error } = useFetch("http://localhost:7000/blogs");
+  // const { data, loading, error } = useFetch("http://localhost:7000/blogs");
   const [searching, setSearch] = useState("");
-  // const [test, setTest] = useState(true);
 
+  //using useSelector to get the state from my reducer
+  const { blogs, loading, error, activeBlog } = useSelector((state) => state.blogsReducer);
+
+  //using useDispatch :
+  const dispatch = useDispatch();
+  
+  //a useEffect for fetching the Blogs into my component and use the Dispatch to controll 
+
+  useEffect(() => {
+
+    async function fetchData() {
+      dispatch({
+        type: "FETCH_LOADING",
+      });
+  
+      try {
+        const responce = await fetch(
+          "http://localhost:7000/blogs"
+        );
+        const FetchedBlogs = await responce.json();
+  
+        dispatch({
+          type: "FETCH_SUCCESS",
+          payload: FetchedBlogs,
+        });
+      } catch (error) {
+        dispatch({
+          type: "FETCH_ERROR",
+        });
+      }
+    }
+    
+
+fetchData();
+
+
+
+  }, [])
+  
+
+
+
+
+  // below is for filttering the blogs 
   const fillterArray = useMemo(() => {
-    return data?.filter((blog) => {
-      // console.log("useMemo");
+    return blogs?.filter((blog) => {
+     
       return (
         blog.author.toLowerCase().includes(searching) ||
         blog.blog.toLowerCase().includes(searching) ||
         blog.title.toLowerCase().includes(searching.toLocaleLowerCase())
       );
     });
-  }, [searching, data]);
-
-  // const fillterArray = data?.filter((blog) => {
-  //   console.log("useMemo");
-  //   return (
-  //     // blog.author.toLowerCase().includes(searching) ||
-  //     // blog.blog.toLowerCase().includes(searching) ||
-  //     blog.title.toLowerCase().includes(searching.toLocaleLowerCase())
-  //   );
-  // });
-
-  // const TestCallback = useCallback(() => {
-  //   console.log("TestCallback");
-  // }, [searching]);
-
-  // const TestCallback = () => {
-  //   console.log("TestCallback");
-  // };
+  }, [searching, blogs]);
 
 
-
-  // console.log("parent render");
 
   if (loading) return "loading ......";
 
@@ -55,11 +80,10 @@ const Blogs = () => {
         onChange={(event) => setSearch(event.target.value.toLowerCase())}
       />
 
-      {fillterArray?.map((blog, index) => (
+      {blogs?.map((blog, index) => (
         <Blog blog={blog}  key={index} />
       ))}
-      {/* <button onClick={() =>   TestCallback()}>Test</button>
-      <button onClick={() => setTest(!test)}>change</button> */}
+
 
     </div>
   );
